@@ -1,4 +1,4 @@
-# react-switchery [![Build Status](https://travis-ci.org/mohithg/react-switchery.svg?branch=master)](https://travis-ci.org/mohithg/react-switchery.svg?branch=master)  [![GitHub version](https://badge.fury.io/gh/mohithg%2Freact-switchery.svg)](https://badge.fury.io/gh/mohithg%2Freact-switchery)
+# react-switchery [![Build Status](https://travis-ci.org/mohithg/react-switchery.svg?branch=master)](https://travis-ci.org/mohithg/react-switchery.svg?branch=master)  [![GitHub version](https://badge.fury.io/gh/mohithg%2Freact-switchery.svg)](https://badge.fury.io/gh/mohithg%2Freact-switchery)   [![npm version](https://badge.fury.io/js/react-switchery.svg)](https://badge.fury.io/js/react-switchery)
 
 react-switchery is a simple react component adopted from [Switchery](http://abpetkov.github.io/switchery/) that helps you turn your default HTML checkbox inputs into beautiful iOS 7 style switches in just few simple steps. You can easily customize switches, so that they match your design perfectly.
 
