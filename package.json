@@ -1,0 +1,52 @@
+{
+  "name": "react-switchery",
+  "version": "1.0.0",
+  "description": "IOS 7 style switch component for React",
+  "main": "build/index.js",
+  "keywords": [
+    "switch",
+    "switchery",
+    "ios style",
+    "style",
+    "react"
+  ],
+  "scripts": {
+   "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --recursive",
+   "test-cov": "./node_modules/.bin/babel-node ./node_modules/.bin/isparta cover --report html --report text node_modules/.bin/_mocha",
+   "build": "rm -rf build && ./node_modules/.bin/babel src --out-dir build",
+   "clean": "rm -rf build",
+   "lint": "eslint src test"
+ },
+ "dependencies": {},
+ "devDependencies": {
+   "babel-cli": "^6.10.1",
+   "babel-core": "^6.9.1",
+   "babel-eslint": "^6.0.4",
+   "babel-plugin-transform-react-jsx": "^6.8.0",
+   "babel-preset-es2015": "^6.9.0",
+   "babel-preset-stage-0": "^6.5.0",
+   "chai": "^3.5.0",
+   "enzyme": "^2.3.0",
+   "eslint": "^2.12.0",
+   "eslint-config-airbnb": "^9.0.1",
+   "eslint-plugin-import": "^1.8.1",
+   "eslint-plugin-jsx-a11y": "^1.4.2",
+   "eslint-plugin-react": "^5.1.1",
+   "isparta": "^4.0.0",
+   "mocha": "^2.5.3",
+   "react": "^15.1.0",
+   "react-dom": "^15.1.0",
+   "classnames": "^2.2.5",
+   "switchery": "0.0.2"
+ },
+ "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohithg/react-switchery.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mohithg/react-switchery.git/issues"
+  },
+  "homepage": "https://github.com/mohithg/react-switchery.git#readme",
+  "author": "Mohith G",
+  "license": "MIT"
+}
