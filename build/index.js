@@ -35,7 +35,7 @@ var Switch = function (_React$Component) {
   function Switch(props) {
     _classCallCheck(this, Switch);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Switch).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Switch.__proto__ || Object.getPrototypeOf(Switch)).call(this, props));
 
     _this.onChange = _this.onChange.bind(_this);
     return _this;
@@ -114,7 +114,7 @@ var Switch = function (_React$Component) {
 
 
 Switch.propTypes = {
-  label: _react2.default.PropTypes.label,
+  label: _react2.default.PropTypes.string,
   className: _react2.default.PropTypes.string,
   required: _react2.default.PropTypes.bool,
   checked: _react2.default.PropTypes.bool,
