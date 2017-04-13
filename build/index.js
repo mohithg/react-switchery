@@ -14,6 +14,10 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _switchery = require('switchery');
+
+var _switchery2 = _interopRequireDefault(_switchery);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -53,7 +57,7 @@ var Switch = function (_React$Component) {
       var input = this.refs.switch;
 
       /* eslint-disable no-undef, no-new */
-      new Switchery(input, this.props.options);
+      new _switchery2.default(input, this.props.options);
       /* eslint-enable no-new, no-undef */
       input.onchange = this.onChange;
     }

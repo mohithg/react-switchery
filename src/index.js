@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import Switchery from 'switchery';
 
 /**
  * React switch input component. Note we are using
