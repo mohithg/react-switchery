@@ -62,7 +62,7 @@ Default: none
 
 ## Example
 
-```
+```javascript
 import React from 'react';
 import Switch from 'react-switchery';
 
