@@ -85,26 +85,22 @@ var Switch = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
+        {
+          className: (0, _classnames2.default)([this.props.className, {
+            required: this.props.required
+          }])
+        },
         _react2.default.createElement(
-          'div',
-          {
-            className: (0, _classnames2.default)([this.props.className, {
-              required: this.props.required
-            }])
-          },
-          _react2.default.createElement(
-            'label',
-            null,
-            this.props.label
-          ),
-          _react2.default.createElement('input', {
-            ref: 'switch',
-            type: 'checkbox',
-            onClick: this.onChange,
-            defaultChecked: this.props.checked
-          })
-        )
+          'label',
+          null,
+          this.props.label
+        ),
+        _react2.default.createElement('input', {
+          ref: 'switch',
+          type: 'checkbox',
+          onClick: this.onChange,
+          defaultChecked: this.props.checked
+        })
       );
     }
   }]);

@@ -46,23 +46,21 @@ class Switch extends React.Component {
    */
   render() {
     return (
-      <div>
-        <div
-          className={classNames([
-            this.props.className,
-            {
-              required: this.props.required,
-            },
-          ])}
-        >
-          <label>{this.props.label}</label>
-          <input
-            ref="switch"
-            type="checkbox"
-            onClick={this.onChange}
-            defaultChecked={this.props.checked}
-          />
-        </div>
+      <div
+        className={classNames([
+          this.props.className,
+          {
+            required: this.props.required,
+          },
+        ])}
+      >
+        <label>{this.props.label}</label>
+        <input
+          ref="switch"
+          type="checkbox"
+          onClick={this.onChange}
+          defaultChecked={this.props.checked}
+        />
       </div>
     );
   }
