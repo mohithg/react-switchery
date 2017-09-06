@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import Switchery from 'switchery';
+import PropTypes from 'prop-types';
 
 /**
  * React switch input component. Note we are using
@@ -70,12 +71,12 @@ class Switch extends React.Component {
  * Validating propTypes
  */
 Switch.propTypes = {
-  label: React.PropTypes.string,
-  className: React.PropTypes.string,
-  required: React.PropTypes.bool,
-  checked: React.PropTypes.bool,
-  options: React.PropTypes.object,
-  onChange: React.PropTypes.func,
+  label: PropTypes.string,
+  className: PropTypes.string,
+  required: PropTypes.bool,
+  checked: PropTypes.bool,
+  options: PropTypes.object,
+  onChange: PropTypes.func,
 };
 
 /**

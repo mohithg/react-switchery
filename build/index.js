@@ -18,6 +18,10 @@ var _switchery = require('switchery');
 
 var _switchery2 = _interopRequireDefault(_switchery);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -114,12 +118,12 @@ var Switch = function (_React$Component) {
 
 
 Switch.propTypes = {
-  label: _react2.default.PropTypes.string,
-  className: _react2.default.PropTypes.string,
-  required: _react2.default.PropTypes.bool,
-  checked: _react2.default.PropTypes.bool,
-  options: _react2.default.PropTypes.object,
-  onChange: _react2.default.PropTypes.func
+  label: _propTypes2.default.string,
+  className: _propTypes2.default.string,
+  required: _propTypes2.default.bool,
+  checked: _propTypes2.default.bool,
+  options: _propTypes2.default.object,
+  onChange: _propTypes2.default.func
 };
 
 /**
