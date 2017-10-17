@@ -3,9 +3,6 @@ import classNames from 'classnames';
 import Switchery from 'switchery';
 
 /**
- * This is a 100% rip of https://github.com/mohithg/react-switchery
- * Which was quite broken @ the time.
- *
  * React switch input component. Note we are using
  * switchery jquery plugin.
  */
