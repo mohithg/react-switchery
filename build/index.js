@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -35,81 +35,93 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * switchery jquery plugin.
  */
 var Switch = function (_React$Component) {
-  _inherits(Switch, _React$Component);
+    _inherits(Switch, _React$Component);
 
-  /**
-   * Constructor
-   */
-  function Switch(props) {
-    _classCallCheck(this, Switch);
+    function Switch() {
+        var _ref;
 
-    var _this = _possibleConstructorReturn(this, (Switch.__proto__ || Object.getPrototypeOf(Switch)).call(this, props));
+        var _temp, _this, _ret;
 
-    _this.onChange = _this.onChange.bind(_this);
-    return _this;
-  }
+        _classCallCheck(this, Switch);
 
-  /**
-   * We initialize the Switchery object
-   * once the component is mounted
-   */
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-
-  _createClass(Switch, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var input = this.refs.switch;
-
-      /* eslint-disable no-undef, no-new */
-      new _switchery2.default(input, this.props.options);
-      /* eslint-enable no-new, no-undef */
-      input.onchange = this.onChange;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Switch.__proto__ || Object.getPrototypeOf(Switch)).call.apply(_ref, [this].concat(args))), _this), _this.onClick = function () {
+            //eslint-disable-line no-undef
+            if (_this.props.onChange) {
+                _this.props.onChange(_this.elCheckbox.checked);
+            }
+            if (_this.elCheckbox.checked) {
+                _this.elWrapper.className = _this.elWrapper.className.split(' ').join(' ') + ' isChecked';
+            } else {
+                _this.elWrapper.className = _this.elWrapper.className.replace('isChecked', '');
+            }
+        }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
-    /**
-     * When the user makes a change
-     * If an external onChange
-     * function is provided, we call that.
-     */
+    _createClass(Switch, [{
+        key: 'componentDidMount',
 
-  }, {
-    key: 'onChange',
-    value: function onChange(event) {
-      if (this.props.onChange) {
-        this.props.onChange(event.target.checked);
-      }
-    }
 
-    /**
-     * renders the component
-     */
+        /**
+         * We initialize the Switchery object
+         * once the component is mounted
+         */
+        value: function componentDidMount() {
+            var input = this.elCheckbox;
 
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        {
-          className: (0, _classnames2.default)([this.props.className, {
-            required: this.props.required
-          }])
-        },
-        _react2.default.createElement(
-          'label',
-          null,
-          this.props.label
-        ),
-        _react2.default.createElement('input', {
-          ref: 'switch',
-          type: 'checkbox',
-          onClick: this.onChange,
-          defaultChecked: this.props.checked
-        })
-      );
-    }
-  }]);
+            /* eslint-disable no-undef, no-new */
+            new _switchery2.default(input, this.props.options);
+            /* eslint-enable no-new, no-undef */
+            input.onchange = this.onChange;
+        }
 
-  return Switch;
+        /**
+         * When the user makes a change
+         * If an external onChange
+         * function is provided, we call that.
+         */
+
+    }, {
+        key: 'render',
+
+
+        /**
+         * renders the component
+         */
+        value: function render() {
+            var _this2 = this;
+
+            return _react2.default.createElement(
+                'div',
+                {
+                    onClick: this.onClick,
+                    className: (0, _classnames2.default)([this.props.className, {
+                        required: this.props.required
+                    }]),
+                    ref: function ref(elWrapper) {
+                        return _this2.elWrapper = elWrapper;
+                    }
+                },
+                this.props.label ? _react2.default.createElement(
+                    'label',
+                    null,
+                    this.props.label
+                ) : null,
+                _react2.default.createElement('input', {
+                    ref: function ref(elCheckbox) {
+                        return _this2.elCheckbox = elCheckbox;
+                    },
+                    type: 'checkbox',
+                    defaultChecked: this.props.checked
+                })
+            );
+        }
+    }]);
+
+    return Switch;
 }(_react2.default.Component);
 
 /**
@@ -118,20 +130,20 @@ var Switch = function (_React$Component) {
 
 
 Switch.propTypes = {
-  label: _propTypes2.default.string,
-  className: _propTypes2.default.string,
-  required: _propTypes2.default.bool,
-  checked: _propTypes2.default.bool,
-  options: _propTypes2.default.object,
-  onChange: _propTypes2.default.func
+    label: _propTypes2.default.string,
+    className: _propTypes2.default.string,
+    required: _propTypes2.default.bool,
+    checked: _propTypes2.default.bool,
+    options: _propTypes2.default.object,
+    onChange: _propTypes2.default.func
 };
 
 /**
  * Default Props
  */
 Switch.defaultProps = {
-  value: true,
-  required: false
+    value: true,
+    required: false
 };
 
 /**

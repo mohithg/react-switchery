@@ -1,6 +1,8 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import Switchery from 'switchery';
+import PropTypes from 'prop-types';
+
 
 /**
  * React switch input component. Note we are using
