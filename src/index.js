@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import Switchery from 'switchery';
 import PropTypes from 'prop-types';
 
+
 /**
  * React switch input component. Note we are using
  * switchery jquery plugin.
@@ -10,20 +11,11 @@ import PropTypes from 'prop-types';
 class Switch extends React.Component {
 
   /**
-   * Constructor
-   */
-  constructor(props) {
-    super(props);
-
-    this.onChange = this.onChange.bind(this);
-  }
-
-  /**
    * We initialize the Switchery object
    * once the component is mounted
    */
   componentDidMount() {
-    const input = this.refs.switch;
+    const input = this.elCheckbox;
 
     /* eslint-disable no-undef, no-new */
     new Switchery(input, this.props.options);
@@ -36,9 +28,14 @@ class Switch extends React.Component {
    * If an external onChange
    * function is provided, we call that.
    */
-  onChange(event) {
+  onClick = () => { // eslint-disable-line
     if (this.props.onChange) {
-      this.props.onChange(event.target.checked);
+      this.props.onChange(this.elCheckbox.checked);
+    }
+    if (this.elCheckbox.checked) {
+      this.elWrapper.className = `${this.elWrapper.className.split(' ').join(' ')} isChecked`;
+    } else {
+      this.elWrapper.className = this.elWrapper.className.replace('isChecked', '');
     }
   }
 
@@ -48,18 +45,19 @@ class Switch extends React.Component {
   render() {
     return (
       <div
+        onClick={this.onClick}
         className={classNames([
           this.props.className,
           {
             required: this.props.required,
           },
         ])}
+        ref={elWrapper => { this.elWrapper = elWrapper; }}
       >
-        <label>{this.props.label}</label>
+        {(this.props.label) ? <label>{this.props.label}</label> : null}
         <input
-          ref="switch"
+          ref={elCheckbox => { this.elCheckbox = elCheckbox; }}
           type="checkbox"
-          onClick={this.onChange}
           defaultChecked={this.props.checked}
         />
       </div>

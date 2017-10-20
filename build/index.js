@@ -37,28 +37,40 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Switch = function (_React$Component) {
   _inherits(Switch, _React$Component);
 
-  /**
-   * Constructor
-   */
-  function Switch(props) {
+  function Switch() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     _classCallCheck(this, Switch);
 
-    var _this = _possibleConstructorReturn(this, (Switch.__proto__ || Object.getPrototypeOf(Switch)).call(this, props));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this.onChange = _this.onChange.bind(_this);
-    return _this;
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Switch.__proto__ || Object.getPrototypeOf(Switch)).call.apply(_ref, [this].concat(args))), _this), _this.onClick = function () {
+      // eslint-disable-line
+      if (_this.props.onChange) {
+        _this.props.onChange(_this.elCheckbox.checked);
+      }
+      if (_this.elCheckbox.checked) {
+        _this.elWrapper.className = _this.elWrapper.className.split(' ').join(' ') + ' isChecked';
+      } else {
+        _this.elWrapper.className = _this.elWrapper.className.replace('isChecked', '');
+      }
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
-
-  /**
-   * We initialize the Switchery object
-   * once the component is mounted
-   */
-
 
   _createClass(Switch, [{
     key: 'componentDidMount',
+
+
+    /**
+     * We initialize the Switchery object
+     * once the component is mounted
+     */
     value: function componentDidMount() {
-      var input = this.refs.switch;
+      var input = this.elCheckbox;
 
       /* eslint-disable no-undef, no-new */
       new _switchery2.default(input, this.props.options);
@@ -73,36 +85,36 @@ var Switch = function (_React$Component) {
      */
 
   }, {
-    key: 'onChange',
-    value: function onChange(event) {
-      if (this.props.onChange) {
-        this.props.onChange(event.target.checked);
-      }
-    }
+    key: 'render',
+
 
     /**
      * renders the component
      */
-
-  }, {
-    key: 'render',
     value: function render() {
+      var _this2 = this;
+
       return _react2.default.createElement(
         'div',
         {
+          onClick: this.onClick,
           className: (0, _classnames2.default)([this.props.className, {
             required: this.props.required
-          }])
+          }]),
+          ref: function ref(elWrapper) {
+            _this2.elWrapper = elWrapper;
+          }
         },
-        _react2.default.createElement(
+        this.props.label ? _react2.default.createElement(
           'label',
           null,
           this.props.label
-        ),
+        ) : null,
         _react2.default.createElement('input', {
-          ref: 'switch',
+          ref: function ref(elCheckbox) {
+            _this2.elCheckbox = elCheckbox;
+          },
           type: 'checkbox',
-          onClick: this.onChange,
           defaultChecked: this.props.checked
         })
       );
