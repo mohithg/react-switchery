@@ -53,11 +53,12 @@ var Switch = function (_React$Component) {
       if (_this.props.onChange) {
         _this.props.onChange(_this.elCheckbox.checked);
       }
+
+      var classList = _this.props.className !== undefined ? _this.props.className.split(" ") : [];
       if (_this.elCheckbox.checked) {
-        _this.elWrapper.className = _this.elWrapper.className.split(' ').join(' ') + ' isChecked';
-      } else {
-        _this.elWrapper.className = _this.elWrapper.className.replace('isChecked', '');
+        classList.push("isChecked");
       }
+      _this.elWrapper.className = classList.join(" ");
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
