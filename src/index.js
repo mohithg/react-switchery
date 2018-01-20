@@ -29,6 +29,10 @@ class Switch extends React.Component {
    * function is provided, we call that.
    */
   onClick = () => { // eslint-disable-line
+    // If switch is disabled don't trigger anything
+    if (this.props.options.disabled) {
+      return;
+    }
     if (this.props.onChange) {
       this.props.onChange(this.elCheckbox.checked);
     }
@@ -38,7 +42,7 @@ class Switch extends React.Component {
       classList.push("isChecked");
     }
     this.elWrapper.className = classList.join(" ");
-  }
+  };
 
   /**
    * renders the component
@@ -84,6 +88,7 @@ Switch.propTypes = {
 Switch.defaultProps = {
   value: true,
   required: false,
+  options: {},
 };
 
 /**

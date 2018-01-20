@@ -50,6 +50,10 @@ var Switch = function (_React$Component) {
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Switch.__proto__ || Object.getPrototypeOf(Switch)).call.apply(_ref, [this].concat(args))), _this), _this.onClick = function () {
       // eslint-disable-line
+      // If switch is disabled don't trigger anything
+      if (_this.props.options.disabled) {
+        return;
+      }
       if (_this.props.onChange) {
         _this.props.onChange(_this.elCheckbox.checked);
       }
@@ -144,7 +148,8 @@ Switch.propTypes = {
  */
 Switch.defaultProps = {
   value: true,
-  required: false
+  required: false,
+  options: {}
 };
 
 /**
