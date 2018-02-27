@@ -1,6 +1,6 @@
 {
   "name": "react-switchery",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "IOS 7 style switch component for React",
   "main": "build/index.js",
   "keywords": [
@@ -22,7 +22,7 @@
     "prop-types": "^15.5.10",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
-    "switchery": "0.0.2"
+    "switchery": "^0.8.2"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
