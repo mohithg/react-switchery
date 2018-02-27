@@ -28,7 +28,7 @@ class Switch extends React.Component {
    * If an external onChange
    * function is provided, we call that.
    */
-  onClick = () => { // eslint-disable-line
+  onClick(){ // eslint-disable-line
     // If switch is disabled don't trigger anything
     if (this.props.options.disabled) {
       return;
@@ -42,7 +42,16 @@ class Switch extends React.Component {
       classList.push("isChecked");
     }
     this.elWrapper.className = classList.join(" ");
-  };
+  }
+
+  /**
+   * Update checked after component prop checked is updated
+   */
+  componentWillReceiveProps(newProps) {
+    if (newProps.checked !== this.props.checked) {
+      this.input.value = newProps.checked;
+    }
+  }
 
   /**
    * renders the component
