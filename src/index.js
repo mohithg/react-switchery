@@ -1,6 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
-import Switchery from 'switchery';
+/* eslint-disable */
+import Switchery from 'mohithg-switchery';
+/* eslint-enable */
 import PropTypes from 'prop-types';
 
 
@@ -10,17 +12,37 @@ import PropTypes from 'prop-types';
  */
 class Switch extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   /**
    * We initialize the Switchery object
    * once the component is mounted
    */
   componentDidMount() {
     const input = this.elCheckbox;
-
+    const checked = this.props.checked;
+    /* eslint-disable */
+    this.setState({
+      checked,
+    });
+    /* eslint-enable */
     /* eslint-disable no-undef, no-new */
     new Switchery(input, this.props.options);
     /* eslint-enable no-new, no-undef */
     input.onchange = this.onChange;
+    this.setChecked();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.checked !== nextProps.checked) {
+      this.setState({
+        checked: nextProps.checked,
+      });
+      this.setChecked();
+    }
   }
 
   /**
@@ -36,13 +58,16 @@ class Switch extends React.Component {
     if (this.props.onChange) {
       this.props.onChange(this.elCheckbox.checked);
     }
+    this.setChecked();
+  };
 
+  setChecked() {
     const classList = this.props.className !== undefined ? this.props.className.split(" ") : [];
     if (this.elCheckbox.checked) {
       classList.push("isChecked");
     }
     this.elWrapper.className = classList.join(" ");
-  };
+  }
 
   /**
    * renders the component
@@ -62,6 +87,7 @@ class Switch extends React.Component {
         {(this.props.label) ? <label>{this.props.label}</label> : null}
         <input
           ref={elCheckbox => { this.elCheckbox = elCheckbox; }}
+          checked={this.state.checked}
           type="checkbox"
           defaultChecked={this.props.checked}
         />

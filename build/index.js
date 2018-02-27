@@ -14,9 +14,9 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _switchery = require('switchery');
+var _mohithgSwitchery = require('mohithg-switchery');
 
-var _switchery2 = _interopRequireDefault(_switchery);
+var _mohithgSwitchery2 = _interopRequireDefault(_mohithgSwitchery);
 
 var _propTypes = require('prop-types');
 
@@ -29,6 +29,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+/* eslint-disable */
+
+/* eslint-enable */
+
 
 /**
  * React switch input component. Note we are using
@@ -37,18 +41,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Switch = function (_React$Component) {
   _inherits(Switch, _React$Component);
 
-  function Switch() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
+  function Switch(props) {
     _classCallCheck(this, Switch);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
+    var _this = _possibleConstructorReturn(this, (Switch.__proto__ || Object.getPrototypeOf(Switch)).call(this, props));
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Switch.__proto__ || Object.getPrototypeOf(Switch)).call.apply(_ref, [this].concat(args))), _this), _this.onClick = function () {
+    _this.onClick = function () {
       // eslint-disable-line
       // If switch is disabled don't trigger anything
       if (_this.props.options.disabled) {
@@ -57,30 +55,44 @@ var Switch = function (_React$Component) {
       if (_this.props.onChange) {
         _this.props.onChange(_this.elCheckbox.checked);
       }
+      _this.setChecked();
+    };
 
-      var classList = _this.props.className !== undefined ? _this.props.className.split(" ") : [];
-      if (_this.elCheckbox.checked) {
-        classList.push("isChecked");
-      }
-      _this.elWrapper.className = classList.join(" ");
-    }, _temp), _possibleConstructorReturn(_this, _ret);
+    _this.state = {};
+    return _this;
   }
+
+  /**
+   * We initialize the Switchery object
+   * once the component is mounted
+   */
+
 
   _createClass(Switch, [{
     key: 'componentDidMount',
-
-
-    /**
-     * We initialize the Switchery object
-     * once the component is mounted
-     */
     value: function componentDidMount() {
       var input = this.elCheckbox;
-
+      var checked = this.props.checked;
+      /* eslint-disable */
+      this.setState({
+        checked: checked
+      });
+      /* eslint-enable */
       /* eslint-disable no-undef, no-new */
-      new _switchery2.default(input, this.props.options);
+      new _mohithgSwitchery2.default(input, this.props.options);
       /* eslint-enable no-new, no-undef */
       input.onchange = this.onChange;
+      this.setChecked();
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (this.props.checked !== nextProps.checked) {
+        this.setState({
+          checked: nextProps.checked
+        });
+        this.setChecked();
+      }
     }
 
     /**
@@ -90,12 +102,21 @@ var Switch = function (_React$Component) {
      */
 
   }, {
-    key: 'render',
-
+    key: 'setChecked',
+    value: function setChecked() {
+      var classList = this.props.className !== undefined ? this.props.className.split(" ") : [];
+      if (this.elCheckbox.checked) {
+        classList.push("isChecked");
+      }
+      this.elWrapper.className = classList.join(" ");
+    }
 
     /**
      * renders the component
      */
+
+  }, {
+    key: 'render',
     value: function render() {
       var _this2 = this;
 
@@ -119,6 +140,7 @@ var Switch = function (_React$Component) {
           ref: function ref(elCheckbox) {
             _this2.elCheckbox = elCheckbox;
           },
+          checked: this.state.checked,
           type: 'checkbox',
           defaultChecked: this.props.checked
         })
