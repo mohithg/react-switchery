@@ -89,7 +89,6 @@ class Switch extends React.Component {
           ref={elCheckbox => { this.elCheckbox = elCheckbox; }}
           checked={this.state.checked}
           type="checkbox"
-          defaultChecked={this.props.checked}
         />
       </div>
     );
