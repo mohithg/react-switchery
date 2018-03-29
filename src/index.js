@@ -14,7 +14,9 @@ class Switch extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      checked: props.checked,
+    };
   }
 
   /**
@@ -23,12 +25,6 @@ class Switch extends React.Component {
    */
   componentDidMount() {
     const input = this.elCheckbox;
-    const checked = this.props.checked;
-    /* eslint-disable */
-    this.setState({
-      checked,
-    });
-    /* eslint-enable */
     /* eslint-disable no-undef, no-new */
     new Switchery(input, this.props.options);
     /* eslint-enable no-new, no-undef */
@@ -89,6 +85,7 @@ class Switch extends React.Component {
           ref={elCheckbox => { this.elCheckbox = elCheckbox; }}
           checked={this.state.checked}
           type="checkbox"
+          onChange={() => null}
         />
       </div>
     );

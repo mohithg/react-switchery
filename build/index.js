@@ -58,7 +58,9 @@ var Switch = function (_React$Component) {
       _this.setChecked();
     };
 
-    _this.state = {};
+    _this.state = {
+      checked: props.checked
+    };
     return _this;
   }
 
@@ -72,12 +74,6 @@ var Switch = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       var input = this.elCheckbox;
-      var checked = this.props.checked;
-      /* eslint-disable */
-      this.setState({
-        checked: checked
-      });
-      /* eslint-enable */
       /* eslint-disable no-undef, no-new */
       new _mohithgSwitchery2.default(input, this.props.options);
       /* eslint-enable no-new, no-undef */
@@ -142,7 +138,9 @@ var Switch = function (_React$Component) {
           },
           checked: this.state.checked,
           type: 'checkbox',
-          defaultChecked: this.props.checked
+          onChange: function onChange() {
+            return null;
+          }
         })
       );
     }
