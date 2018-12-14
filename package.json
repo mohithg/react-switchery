@@ -20,8 +20,8 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "prop-types": "^15.5.10",
-    "react": "^15.1.0",
-    "react-dom": "^15.1.0",
+    "react": "^15.1.0 || ^16.3",
+    "react-dom": "^15.1.0 || ^16.3",
     "mohithg-switchery": "^0.8.4"
   },
   "devDependencies": {
